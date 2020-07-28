@@ -1,6 +1,27 @@
-# SampleAngular
+# Valist Angular sample
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
+This example demonstrates how to set up a configuration for an Angular application but can work with many other applications built with Node.js as well with slight modification.
+
+As Angular does not require any custom server to run, the "static" configuration is used. After the build is finished, the content of "/app/dist/example-app/" will be hosted by a  web server for static website hosting. 
+
+### valist.yml
+```yaml
+services:
+  runtime: static
+  dockerfile: valist.Dockerfile
+  dist: /app/dist/example_app
+  cmd: node_modules/.bin/ng build --prod
+```  
+
+
+### valist.Dockerfile
+```
+FROM node:alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+```
 
 ## Development server
 
