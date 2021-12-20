@@ -1,5 +1,6 @@
 services:
-    runtime: static
-    dockerfile: valist.Dockerfile
-    dist: /app/dist/example_app
-    cmd: node_modules/.bin/ng build --prod
+    web:
+        runtime: static
+        dockerfile: valist.Dockerfile
+        dist: /app/dist/example_app
+        cmd: node_modules/.bin/ng build --prod
